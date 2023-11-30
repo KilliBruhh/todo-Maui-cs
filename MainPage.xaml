@@ -8,18 +8,36 @@
         <!-- Button to add new task -->
         <Button Text="Add Task" Clicked="OnAddItemClicked" BackgroundColor="#4CAF50" TextColor="White" Margin="10" />
 
+        <!-- Your MainPage.xaml -->
         <ListView x:Name="todoListView" Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout>
-                            <Label Text="{Binding TaskName}" FontSize="18" />
-                            <Label Text="{Binding DueDate, StringFormat='Due: {0:d}'}" FontSize="14" TextColor="Gray" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0">
+                                    <Label Text="{Binding TaskName}" FontSize="18" />
+                                    <Label Text="{Binding DueDate, StringFormat='Due: {0:d}'}" FontSize="14" TextColor="Gray" />
+                                </StackLayout>
+
+                                <BoxView Grid.Column="1" BackgroundColor="{Binding PriorityColor}" WidthRequest="40" HeightRequest="40" />
+                            </Grid>
+
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Button Text="Delete" Clicked="OnDeleteItemClicked" BackgroundColor="Red" TextColor="White" Margin="5" CommandParameter="{Binding .}" />
+                                <Button Text="Edit" Clicked="OnEditItemClicked" BackgroundColor="Yellow" TextColor="Black" Margin="5" CommandParameter="{Binding .}" />
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
     </StackLayout>
 
 </ContentPage>

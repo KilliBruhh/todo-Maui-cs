@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using MauiTodo;
 
 namespace MauiTodo
@@ -8,10 +9,10 @@ namespace MauiTodo
         int count = 0;
         public ObservableCollection<ToDoItem> ToDoItems { get; set; } = new ObservableCollection<ToDoItem>();
 
+
         public MainPage()
         {
-
-            InitializeComponent();
+            InitializeComponent();     
             todoListView.ItemsSource = ToDoItems;
         }
 
@@ -27,6 +28,17 @@ namespace MauiTodo
             ToDoItems.Add(newItem);
             todoListView.ItemsSource = null; // refresh
             todoListView.ItemsSource = ToDoItems;
+        }
+
+        // Delete and Edit function
+        public void OnDeleteItemClicked(object sender, EventArgs e)
+        {
+            var item = (ToDoItem)((Button)sender).CommandParameter;
+            ToDoItems.Remove(item);
+        }
+        public void OnEditItemClicked(object sender, EventArgs e)
+        {
+
         }
 
         // Class for the data int he ToDo
