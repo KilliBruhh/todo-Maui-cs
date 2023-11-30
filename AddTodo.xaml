@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTodo.AddTodo"
+             Title="AddTodo">
+    <VerticalStackLayout>
+
+        <!-- Entry for adding new ToDo items -->
+        <Label x:Name="TitleLabel" Text="Add A New ToDo Item To Your List" Margin="5,10,5,10"/>
+        <Entry x:Name="taskName" Placeholder="Add a new task" Margin="5,10,5,10" />
+        <DatePicker x:Name="taskExpDate" Margin=" 10"/>
+        <Picker x:Name="taskPriority"
+                Title="Select the priority">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Int32}">
+                    <x:Int32>1</x:Int32>
+                    <x:Int32>2</x:Int32>
+                    <x:Int32>3</x:Int32>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        
+        <VerticalStackLayout>
+            <Button x:Name="AddButton" Clicked="onAddTodo" Text="Add ToDo" Margin="5,10,5,10"/>
+            <Button x:Name="BackButton" Clicked="onNavigateBack" Text="Go Back" Margin="5,10,5,10"/>
+        </VerticalStackLayout>
+
+
+    </VerticalStackLayout>
+</ContentPage>
