@@ -9,7 +9,7 @@ namespace MauiTodo
         int count = 0;
         public ObservableCollection<ToDoItem> ToDoItems { get; set; } = new ObservableCollection<ToDoItem>();
 
-
+        
         public MainPage()
         {
             InitializeComponent();     
@@ -29,6 +29,12 @@ namespace MauiTodo
             todoListView.ItemsSource = null; // refresh
             todoListView.ItemsSource = ToDoItems;
         }
+        // Replace Item in the list
+        public void EditItemInList(ToDoItem replacement, ToDoItem original)
+        {
+            var indexOriginal = ToDoItems.IndexOf(original);
+            ToDoItems[indexOriginal] = replacement;
+        }
 
         // Delete and Edit function
         public void OnDeleteItemClicked(object sender, EventArgs e)
@@ -36,13 +42,16 @@ namespace MauiTodo
             var item = (ToDoItem)((Button)sender).CommandParameter;
             ToDoItems.Remove(item);
         }
-        public void OnEditItemClicked(object sender, EventArgs e)
+        public async void OnEditItemClicked(object sender, EventArgs e)
         {
-
+            var button = (Button)sender;
+            var itemSelected = button.CommandParameter as ToDoItem;
+            await Navigation.PushAsync(new EditPage(this,itemSelected));
+            
         }
 
         // Class for the data int he ToDo
-        public class ToDoItem
+        public class ToDoItem 
         {
             public string TaskName { get; set; }
             public DateTime DueDate { get; set; }

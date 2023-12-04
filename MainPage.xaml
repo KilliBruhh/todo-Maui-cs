@@ -22,16 +22,20 @@
 
                                 <StackLayout Grid.Column="0">
                                     <Label Text="{Binding TaskName}" FontSize="18" />
-                                    <Label Text="{Binding DueDate, StringFormat='Due: {0:d}'}" FontSize="14" TextColor="Gray" />
+                                    <Label Text="{Binding DueDate, StringFormat='Due: {0:d}' }" FontSize="14" TextColor="Gray" />
                                 </StackLayout>
 
-                                <BoxView Grid.Column="1" BackgroundColor="{Binding PriorityColor}" WidthRequest="40" HeightRequest="40" />
+                                <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand" Margin="80,15,0,0">
+                                    <Label Text="Priority" FontSize="16" TextColor="gray"/>
+                                </StackLayout>
+                                
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Grid.Column="1">
+                                    <Button Text="Delete" Clicked="OnDeleteItemClicked" CommandParameter="{Binding .}" BackgroundColor="Red" TextColor="White" Margin="5" HeightRequest="40" />
+                                    <Button Text="Edit" Clicked="OnEditItemClicked" CommandParameter="{Binding .}" BackgroundColor="Yellow" TextColor="Black" Margin="5" HeightRequest="40" />
+                                </StackLayout>
                             </Grid>
 
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                <Button Text="Delete" Clicked="OnDeleteItemClicked" BackgroundColor="Red" TextColor="White" Margin="5" CommandParameter="{Binding .}" />
-                                <Button Text="Edit" Clicked="OnEditItemClicked" BackgroundColor="Yellow" TextColor="Black" Margin="5" CommandParameter="{Binding .}" />
-                            </StackLayout>
+                           
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
