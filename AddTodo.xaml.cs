@@ -27,7 +27,7 @@ public partial class AddTodo : ContentPage
 
 		ToDoItem toDoItem = new ToDoItem
 		{
-			TaskName = tn,
+			Title = tn,
 			DueDate = td,
 			Priority = tp,
 		};

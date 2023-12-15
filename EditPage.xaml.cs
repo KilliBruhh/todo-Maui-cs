@@ -6,12 +6,15 @@ public partial class EditPage : ContentPage
 {
     private MainPage _MainPage;
     private ToDoItem item;
+    private int GID;
 
-    public EditPage(MainPage mainPage, ToDoItem itemSelected)
+    public EditPage(MainPage mainPage, ToDoItem itemSelected, int Id)
 	{
 		InitializeComponent();
         _MainPage = mainPage;
         this.item = itemSelected;
+        this.GID = Id;
+
         SetFormData();
     }
 
@@ -19,7 +22,7 @@ public partial class EditPage : ContentPage
 
     public void SetFormData()
     {
-        taskName.Text = item.TaskName;
+        taskName.Text = item.Title;
         taskExpDate.Date = item.DueDate;
         taskPriority.SelectedIndex = item.Priority - 1;
     }
@@ -37,7 +40,8 @@ public partial class EditPage : ContentPage
 
         ToDoItem toDoItem = new ToDoItem
         {
-            TaskName = tn,
+            Id = GID,
+            Title = tn,
             DueDate = td,
             Priority = tp,
         };

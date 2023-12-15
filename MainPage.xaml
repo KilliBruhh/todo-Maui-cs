@@ -21,12 +21,12 @@
                                 </Grid.ColumnDefinitions>
 
                                 <StackLayout Grid.Column="0">
-                                    <Label Text="{Binding TaskName}" FontSize="18" />
+                                    <Label Text="{Binding Title}" FontSize="18" />
                                     <Label Text="{Binding DueDate, StringFormat='Due: {0:d}' }" FontSize="14" TextColor="Gray" />
                                 </StackLayout>
 
                                 <StackLayout Orientation="Horizontal"  HorizontalOptions="CenterAndExpand" Margin="80,15,0,0">
-                                    <Label Text="Priority" FontSize="16" TextColor="gray"/>
+                                    <Label Text="{Binding Priority}" FontSize="16" TextColor="gray"/>
                                 </StackLayout>
                                 
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" Grid.Column="1">
